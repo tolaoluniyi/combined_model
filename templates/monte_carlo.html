@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monte Carlo Simulation Model</title>
+</head>
+<body>
+    <h1>Monte Carlo Simulation Model for Soccer Match Outcomes</h1>
+    <form action="/monte_carlo" method="post" enctype="multipart/form-data">
+        <label for="league">Select League:</label>
+        <select id="league" name="league">
+            <option value="League1">League1</option>
+            <option value="League2">League2</option>
+            <option value="League3">League3</option>
+            <option value="League4">League4</option>
+            <option value="League5">League5</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    {% if result %}
+        <h2>Predicted Outcomes:</h2>
+        <table border="1">
+            <tr>
+                <th>Match</th>
+                <th>Outcome</th>
+                <th>Over 1.5 Goals</th>
+                <th>Over 2.5 Goals</th>
+            </tr>
+            {% for row in result %}
+            <tr>
+                <td>{{ row.match }}</td>
+                <td>{{ row.outcome }}</td>
+                <td>{{ row.over1_5 }}</td>
+                <td>{{ row.over2_5 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
